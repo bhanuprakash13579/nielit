@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    container_name: nielit_backend
+    volumes:
+      - ./backend/app:/app/app
+      - nielit_data:/app/data
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=sqlite:///./data/nielit.db
+      - SECRET_KEY=production_secret_key_change_me
+    restart: always
+
+  frontend:
+    build: .
+    container_name: nielit_frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: always
+
+volumes:
+  nielit_data:

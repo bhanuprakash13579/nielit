@@ -1,0 +1,21 @@
+# Node
+node_modules/
+dist/
+.env
+.npm
+
+# Python
+backend/venv/
+backend/__pycache__/
+*.pyc
+.pytest_cache/
+
+# Mac
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+
+# Local DB
+backend/nielit.db
