@@ -15,6 +15,24 @@ This repository contains the source code for the **State/District Inventory & Tr
 *   **Audit**: Immutable `InventoryTransaction` ledger.
 *   **Integration**: NDU Sync with Progress Logic.
 
+### Deployment
+
+#### Frontend (Vercel)
+- **Repo:** `src/`
+- **Build Command:** `npm run build`
+- **Output Directory:** `dist`
+- **IMPORTANT:** Do NOT set `VITE_API_URL` in Vercel.
+  - The project uses a **Server-Side Proxy** (`vercel.json`) to route API requests to Railway.
+  - This bypasses client-side DNS resolution issues (`ERR_NAME_NOT_RESOLVED`) common with some ISPs.
+  - `src/utils/api.js` automatically detects Vercel and forces relative paths (`/api/v1/...`).
+
+#### Backend (Railway)
+- **Repo:** `backend/`
+- **Start Command:** `uvicorn app.main:app --host 0.0.0.0 --port $PORT`
+- **Env Vars:**
+  - `DATABASE_URL`: PostgreSQL Connection String
+  - `PORT`: 8000
+
 ## 4. Setup
 1.  `npm install`
 2.  `cd backend && pip install -r requirements.txt`
