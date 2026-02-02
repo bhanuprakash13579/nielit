@@ -32,23 +32,23 @@ from sqlalchemy.orm import Session
 from .database import SessionLocal
 from . import crud, schemas, models
 
-@app.on_event("startup")
-def startup_event():
-    db = SessionLocal()
-    try:
-        user = crud.get_user_by_username(db, "admin")
-        if not user:
-            print("Creating Initial Super Admin...")
-            admin_data = schemas.UserCreate(
-                username="admin",
-                password="admin123",
-                full_name="Administrator",
-                role=models.Role.SUPER_ADMIN
-            )
-            crud.create_user(db, admin_data)
-            print("Super Admin Created: admin / admin123")
-    finally:
-        db.close()
+# @app.on_event("startup")
+# def startup_event():
+#     db = SessionLocal()
+#     try:
+#         user = crud.get_user_by_username(db, "admin")
+#         if not user:
+#             print("Creating Initial Super Admin...")
+#             admin_data = schemas.UserCreate(
+#                 username="admin",
+#                 password="admin123",
+#                 full_name="Administrator",
+#                 role=models.Role.SUPER_ADMIN
+#             )
+#             crud.create_user(db, admin_data)
+#             print("Super Admin Created: admin / admin123")
+#     finally:
+#         db.close()
 
 # Include Routers
 app.include_router(auth.router, prefix="/api/v1/auth", tags=["auth"])
