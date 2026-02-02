@@ -10,4 +10,6 @@ COPY . .
 # Create data directory for SQLite
 RUN mkdir -p data
 
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+# Use PORT env variable from Railway, default to 8000
+CMD uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000}
+
