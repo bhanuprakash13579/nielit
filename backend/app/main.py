@@ -3,8 +3,19 @@ from fastapi.middleware.cors import CORSMiddleware
 from .database import engine, Base
 from .routers import auth, inventory, training, content, integration, dashboard
 
+import logging
+
+# Basic logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
 # Create Tables (Simplistic migration)
-Base.metadata.create_all(bind=engine)
+try:
+    logger.info("Initializing database...")
+    Base.metadata.create_all(bind=engine)
+    logger.info("Database initialized successfully.")
+except Exception as e:
+    logger.error(f"Database initialization failed: {e}")
 
 app = FastAPI(title="Project SAMARTH API", version="1.0.0")
 
