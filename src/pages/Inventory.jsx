@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
+import { API_BASE_URL } from '../utils/api';
 
 const Inventory = () => {
     const [items, setItems] = useState([]);
@@ -14,7 +15,7 @@ const Inventory = () => {
 
     const fetchInventory = async () => {
         try {
-            const response = await fetch('http://localhost:8000/api/v1/inventory/', {
+            const response = await fetch(`${API_BASE_URL}/api/v1/inventory/`, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
@@ -37,7 +38,7 @@ const Inventory = () => {
     const handleDelete = async (id) => {
         if (window.confirm('Are you sure you want to delete this item?')) {
             try {
-                const response = await fetch(`http://localhost:8000/api/v1/inventory/${id}`, {
+                const response = await fetch(`${API_BASE_URL}/api/v1/inventory/${id}`, {
                     method: 'DELETE',
                     headers: {
                         'Authorization': `Bearer ${token}`
@@ -65,7 +66,7 @@ const Inventory = () => {
     const handleExportPDF = async () => {
         // Audit Log Trigger
         try {
-            await fetch('http://localhost:8000/api/v1/inventory/audit-export', {
+            await fetch(`${API_BASE_URL}/api/v1/inventory/audit-export`, {
                 method: 'POST',
                 headers: { 'Authorization': `Bearer ${token}` }
             });
@@ -111,7 +112,7 @@ const Inventory = () => {
                         onClick={async () => {
                             // Audit Log
                             try {
-                                await fetch('http://localhost:8000/api/v1/inventory/audit-export', {
+                                await fetch(`${API_BASE_URL}/api/v1/inventory/audit-export`, {
                                     method: 'POST',
                                     headers: { 'Authorization': `Bearer ${token}` }
                                 });
@@ -249,7 +250,7 @@ const Inventory = () => {
 
                             (async () => {
                                 try {
-                                    const response = await fetch('http://localhost:8000/api/v1/inventory/', {
+                                    const response = await fetch(`${API_BASE_URL}/api/v1/inventory/`, {
                                         method: 'POST',
                                         headers: {
                                             'Content-Type': 'application/json',

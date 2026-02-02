@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
+import { API_BASE_URL } from '../utils/api';
 
 const Users = () => {
     const [users, setUsers] = useState([]);
@@ -20,7 +21,7 @@ const Users = () => {
 
     const fetchUsers = async () => {
         try {
-            const response = await fetch('http://localhost:8000/api/v1/auth/users/', {
+            const response = await fetch(`${API_BASE_URL}/api/v1/auth/users/`, {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
             if (response.ok) {
@@ -34,7 +35,7 @@ const Users = () => {
     const handleAddUser = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch('http://localhost:8000/api/v1/auth/users/', {
+            const response = await fetch(`${API_BASE_URL}/api/v1/auth/users/`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -57,7 +58,7 @@ const Users = () => {
     const handleDelete = async (id) => {
         if (!window.confirm("Are you sure?")) return;
         try {
-            const response = await fetch(`http://localhost:8000/api/v1/auth/users/${id}`, {
+            const response = await fetch(`${API_BASE_URL}/api/v1/auth/users/${id}`, {
                 method: 'DELETE',
                 headers: { 'Authorization': `Bearer ${token}` }
             });

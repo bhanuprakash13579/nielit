@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
+import { API_BASE_URL } from '../utils/api';
 
 const Content = () => {
     const [contents, setContents] = useState([]);
@@ -12,7 +13,7 @@ const Content = () => {
 
     const fetchContent = async () => {
         try {
-            const response = await fetch('http://localhost:8000/api/v1/content/', {
+            const response = await fetch(`${API_BASE_URL}/api/v1/content/`, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
@@ -41,7 +42,7 @@ const Content = () => {
     const handleAddItem = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch('http://localhost:8000/api/v1/content/', {
+            const response = await fetch(`${API_BASE_URL}/api/v1/content/`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -105,7 +106,7 @@ const Content = () => {
                                                 className="text-xs text-primary-600 border border-primary-200 px-2 py-1 rounded hover:bg-primary-50"
                                                 onClick={async () => {
                                                     try {
-                                                        const res = await fetch(`http://localhost:8000/api/v1/integration/sync/content/${item.id}`, {
+                                                        const res = await fetch(`${API_BASE_URL}/api/v1/integration/sync/content/${item.id}`, {
                                                             method: 'POST',
                                                             headers: { 'Authorization': `Bearer ${token}` }
                                                         });

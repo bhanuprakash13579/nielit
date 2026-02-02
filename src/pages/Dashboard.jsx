@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
+import { API_BASE_URL } from '../utils/api';
 
 const Dashboard = () => {
     const { user } = useAuth();
@@ -16,7 +17,7 @@ const Dashboard = () => {
         const fetchStats = async () => {
             if (!user) return;
             try {
-                const res = await fetch('http://localhost:8000/api/v1/dashboard/stats', {
+                const res = await fetch(`${API_BASE_URL}/api/v1/dashboard/stats`, {
                     headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` }
                 });
                 if (res.ok) {

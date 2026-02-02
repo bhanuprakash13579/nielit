@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
+import { API_BASE_URL } from '../utils/api';
 
 const Training = () => {
     const [trainings, setTrainings] = useState([]);
@@ -12,7 +13,7 @@ const Training = () => {
 
     const fetchTrainings = async () => {
         try {
-            const response = await fetch('http://localhost:8000/api/v1/training/', {
+            const response = await fetch(`${API_BASE_URL}/api/v1/training/`, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
@@ -69,7 +70,7 @@ const Training = () => {
                                         className="text-xs text-primary-600 border border-primary-200 px-2 py-1 rounded hover:bg-primary-50"
                                         onClick={async () => {
                                             try {
-                                                const res = await fetch(`http://localhost:8000/api/v1/integration/sync/training/${training.id}`, {
+                                                const res = await fetch(`${API_BASE_URL}/api/v1/integration/sync/training/${training.id}`, {
                                                     method: 'POST',
                                                     headers: { 'Authorization': `Bearer ${token}` }
                                                 });
@@ -119,7 +120,7 @@ const Training = () => {
 
                             (async () => {
                                 try {
-                                    const response = await fetch('http://localhost:8000/api/v1/training/', {
+                                    const response = await fetch(`${API_BASE_URL}/api/v1/training/`, {
                                         method: 'POST',
                                         headers: {
                                             'Content-Type': 'application/json',

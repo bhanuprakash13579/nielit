@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { ROLES } from '../utils/constants';
+import { API_BASE_URL } from '../utils/api';
 
 const AuthContext = createContext(null);
 
@@ -36,7 +37,7 @@ export const AuthProvider = ({ children }) => {
             formData.append('username', username);
             formData.append('password', password);
 
-            const response = await fetch('http://localhost:8000/api/v1/auth/token', {
+            const response = await fetch(`${API_BASE_URL}/api/v1/auth/token`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
