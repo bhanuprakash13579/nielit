@@ -1,6 +1,10 @@
 {
     "rewrites": [
         {
+            "source": "/api/v1/:match*",
+            "destination": "https://nielit-production.up.railway.app/api/v1/:match*"
+        },
+        {
             "source": "/(.*)",
             "destination": "/"
         }
