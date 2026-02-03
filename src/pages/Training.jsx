@@ -82,7 +82,7 @@ const Training = () => {
                                     </button>
                                 )}
                                 {/* Clause 4.3: Attendance Visibility */}
-                                <button className="text-xs font-bold text-slate-500 uppercase tracking-wide px-2 hover:text-slate-700" onClick={() => alert("Attendance Sheet View")}>
+                                <button className="text-xs font-bold text-slate-500 uppercase tracking-wide px-2 hover:text-slate-700" onClick={() => alert("Compliance: Showing Attendance Sheet")}>
                                     View Attendance
                                 </button>
                                 <button
@@ -131,9 +131,13 @@ const Training = () => {
                                     if (response.ok) {
                                         fetchTrainings();
                                         setShowModal(false);
+                                    } else {
+                                        const err = await response.json();
+                                        alert("Failed: " + (err.detail || "Error creating training"));
                                     }
                                 } catch (error) {
                                     console.error("Failed to schedule training", error);
+                                    alert("Network Error: Could not schedule training");
                                 }
                             })();
                         }} className="space-y-4">

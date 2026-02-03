@@ -16,7 +16,7 @@ def read_inventory(skip: int = 0, limit: int = 100, db: Session = Depends(get_db
 def create_item(item: schemas.InventoryCreate, db: Session = Depends(get_db), current_user: models.User = Depends(get_current_active_user)):
     # In a real app, strict role check here (e.g. only Admin/SuperAdmin)
     try:
-        return crud.create_inventory_item(db=db, item=item)
+        return crud.create_inventory_item(db=db, item=item, user_id=current_user.id)
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
 
