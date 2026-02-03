@@ -1,4 +1,4 @@
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, field_validator
 from typing import Optional, List
 from datetime import datetime
 from .models import Role
@@ -42,6 +42,13 @@ class InventoryBase(BaseModel):
     qr_code: Optional[str] = None
     description: Optional[str] = None
     batch_id: Optional[int] = None
+
+    @field_validator('serial_number', 'qr_code', 'model', 'description', 'institution', 'district', mode='before')
+    @classmethod
+    def empty_string_to_none(cls, v):
+        if v == "":
+            return None
+        return v
 
 class InventoryCreate(InventoryBase):
     pass

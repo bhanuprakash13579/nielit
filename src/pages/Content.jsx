@@ -136,7 +136,7 @@ const Content = () => {
                         <h2 className="text-xl font-bold mb-4">Add New Content</h2>
                         <form onSubmit={handleAddItem} className="space-y-4">
                             <div>
-                                <label className="block text-sm font-medium text-slate-700 mb-1">Title</label>
+                                <label className="block text-sm font-medium text-slate-700 mb-1">Title <span className="text-red-500">*</span></label>
                                 <input
                                     type="text"
                                     className="input-field"
@@ -157,7 +157,7 @@ const Content = () => {
                                 </select>
                             </div>
                             <div>
-                                <label className="block text-sm font-medium text-slate-700 mb-1">Duration (minutes)</label>
+                                <label className="block text-sm font-medium text-slate-700 mb-1">Duration (minutes) <span className="text-red-500">*</span></label>
                                 <input
                                     type="number"
                                     className="input-field"

@@ -13,7 +13,18 @@ def run_command(command, cwd="."):
 def main():
     print("🚀 Starting Production Release Automation...")
     
+    # 0. Enforce Production Environment
+    print("\n🌍 Enforcing Production Environment...")
+    try:
+        # Import the switcher module properly or execute it
+        # Since it's in a sibling dir, let's use subprocess to be safe and consistent
+        subprocess.run("python3 scripts/switch_env.py prod", shell=True, check=True)
+    except subprocess.CalledProcessError:
+        print("❌ Failed to switch to Production Environment. Aborting.")
+        sys.exit(1)
+
     # 1. Backend Pre-Flight
+
     print("\n🔍 verifying Backend Health...")
     # Compile python files to check for syntax errors
     run_command("python3 -m compileall -q app", cwd="backend")

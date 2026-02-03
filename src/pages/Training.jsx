@@ -142,15 +142,15 @@ const Training = () => {
                             })();
                         }} className="space-y-4">
                             <div>
-                                <label className="block text-sm font-medium text-slate-700 mb-1">Title</label>
+                                <label className="block text-sm font-medium text-slate-700 mb-1">Title <span className="text-red-500">*</span></label>
                                 <input name="title" type="text" className="input-field" required />
                             </div>
                             <div>
-                                <label className="block text-sm font-medium text-slate-700 mb-1">Instructor</label>
+                                <label className="block text-sm font-medium text-slate-700 mb-1">Instructor <span className="text-red-500">*</span></label>
                                 <input name="instructor" type="text" className="input-field" required />
                             </div>
                             <div>
-                                <label className="block text-sm font-medium text-slate-700 mb-1">Date</label>
+                                <label className="block text-sm font-medium text-slate-700 mb-1">Date <span className="text-red-500">*</span></label>
                                 <input name="date" type="date" className="input-field" required />
                             </div>
                             <div className="flex justify-end gap-2 mt-6">

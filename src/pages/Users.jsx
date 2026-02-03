@@ -135,7 +135,7 @@ const Users = () => {
                         <h2 className="text-xl font-bold mb-4">Add New User</h2>
                         <form onSubmit={handleAddUser} className="space-y-4">
                             <div>
-                                <label className="block text-sm font-medium text-slate-700 mb-1">Username</label>
+                                <label className="block text-sm font-medium text-slate-700 mb-1">Username <span className="text-red-500">*</span></label>
                                 <input
                                     type="text"
                                     className="input-field"
@@ -145,7 +145,7 @@ const Users = () => {
                                 />
                             </div>
                             <div>
-                                <label className="block text-sm font-medium text-slate-700 mb-1">Full Name</label>
+                                <label className="block text-sm font-medium text-slate-700 mb-1">Full Name <span className="text-red-500">*</span></label>
                                 <input
                                     type="text"
                                     className="input-field"
@@ -155,7 +155,7 @@ const Users = () => {
                                 />
                             </div>
                             <div>
-                                <label className="block text-sm font-medium text-slate-700 mb-1">Password</label>
+                                <label className="block text-sm font-medium text-slate-700 mb-1">Password <span className="text-red-500">*</span></label>
                                 <input
                                     type="password"
                                     className="input-field"

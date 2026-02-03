@@ -272,11 +272,11 @@ const Inventory = () => {
                         }} className="space-y-4">
                             <div className="grid grid-cols-2 gap-4">
                                 <div>
-                                    <label className="block text-sm font-medium text-slate-700 mb-1">Kit ID (Unique)</label>
+                                    <label className="block text-sm font-medium text-slate-700 mb-1">Kit ID (Unique) <span className="text-red-500">*</span></label>
                                     <input name="kit_id" type="text" className="input-field" required placeholder="KIT-001" defaultValue={currentItem?.kit_id} />
                                 </div>
                                 <div>
-                                    <label className="block text-sm font-medium text-slate-700 mb-1">Item Name</label>
+                                    <label className="block text-sm font-medium text-slate-700 mb-1">Item Name <span className="text-red-500">*</span></label>
                                     <input name="name" type="text" className="input-field" required defaultValue={currentItem?.name} />
                                 </div>
                             </div>
@@ -291,12 +291,12 @@ const Inventory = () => {
                                 </div>
                             </div>
                             <div>
-                                <label className="block text-sm font-medium text-slate-700 mb-1">Category</label>
+                                <label className="block text-sm font-medium text-slate-700 mb-1">Category <span className="text-red-500">*</span></label>
                                 <input name="category" type="text" className="input-field" required defaultValue={currentItem?.category} />
                             </div>
                             <div className="grid grid-cols-3 gap-4">
                                 <div>
-                                    <label className="block text-sm font-medium text-slate-700 mb-1">State</label>
+                                    <label className="block text-sm font-medium text-slate-700 mb-1">State <span className="text-red-500">*</span></label>
                                     <select name="state" className="input-field" required defaultValue={currentItem?.state || 'Nagaland'}>
                                         <option value="Nagaland">Nagaland</option>
                                         <option value="Assam">Assam</option>
