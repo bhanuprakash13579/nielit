@@ -19,3 +19,4 @@ backend/__pycache__/
 
 # Local DB
 backend/nielit.db
+backend/sql_app.db
